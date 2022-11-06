@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
- "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node index.js"
-  },  
+"scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.js"
+    },
     "license": "ISC",
   "dependencies": {
     "cloudinary": "^1.23.0",
@@ -20,5 +21,5 @@
   "engines": {
     "node": "16.x"
   }
-}
 
+}
