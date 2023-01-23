@@ -26,4 +26,7 @@ app.get('/', (req, res) => {
   res.send('Welcome  to DPhi !!!')
 })
 
-app.listen(5000, () => console.log("Server is running"));
+
+app.listen(process.env.PORT, () => {
+    console.log("App is running")
+});
