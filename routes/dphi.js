@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const cloudinary = require("../utils/cloudinary");
 const upload = require("../utils/multer");
-const Dphi = require("../model/DPhi");
+const dphi = require("../model/dphi");
 
 router.post("/", upload.single("image"), async (req, res) => {
   try {
@@ -26,7 +26,7 @@ router.post("/", upload.single("image"), async (req, res) => {
 
 router.get("/", async (req, res) => {
   try {
-    let data = await Dphi.find();
+    let data = await dphi.find();
     res.json(data);
   } catch (err) {
     console.log(err);
@@ -36,7 +36,7 @@ router.get("/", async (req, res) => {
 router.delete("/:_id", async (req, res) => {
   try {
     // Find user by id
-    let challenges = await Dphi.findById(req.params._id);
+    let challenges = await dphi.findById(req.params._id);
     // Delete image from cloudinary
     await cloudinary.uploader.destroy(challenges.cloudinary_id);
     // Delete user from db
@@ -51,7 +51,7 @@ router.put("/:_id", upload.single("image"), async (req, res) => {
   try {
 
 
-    let challenges = await Dphi.findById(req.params._id);
+    let challenges = await dphi.findById(req.params._id);
     //Delete image from cloudinary
     //Upload image to cloudinary
     let result;
@@ -78,7 +78,7 @@ router.put("/:_id", upload.single("image"), async (req, res) => {
       };
     }
 
-    await Dphi.findByIdAndUpdate(req.params._id, dataUpdate, {
+    await dphi.findByIdAndUpdate(req.params._id, dataUpdate, {
       new: true
     });
     res.json({
@@ -93,7 +93,7 @@ router.put("/:_id", upload.single("image"), async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     // Find user by id
-    let user = await Dphi.findById(req.params.id);
+    let user = await dphi.findById(req.params.id);
     res.json(user);
   } catch (err) {
     console.log(err);

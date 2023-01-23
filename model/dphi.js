@@ -23,4 +23,4 @@ const challenges = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model("DPhi", challenges);
+module.exports = mongoose.model("dPhi", challenges);
