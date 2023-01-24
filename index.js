@@ -5,7 +5,23 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 
 dotenv.config();
-
+app.use(cors({
+    origin: '*',
+    credentials: true
+}))
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With,  Accept"
+    );
+    res.setHeader('Content-Type', 'application/json')
+    res.setHeader(
+        "Access-Control-Allow-Methods",
+        "GET, POST, PATCH, DELETE, OPTIONS"
+    );
+    next();
+});
 // Connect DB
 mongoose
   .connect(process.env.MONGO_URL, {
