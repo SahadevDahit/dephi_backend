@@ -6,7 +6,7 @@ const dphi = require("../model/dphi");
 router.post("/", upload.single("image"), async (req, res) => {
   try {
     const result = await cloudinary.uploader.upload(req.file.path);
-    let challenges = new Dphi({
+    let challenges = new dphi({
       challengeName: req.body.challengeName,
       startDate: req.body.startDate,
       endDate: req.body.endDate,
